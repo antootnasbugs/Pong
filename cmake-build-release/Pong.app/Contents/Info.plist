@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>CFBundleExecutable</key>
+    <string>Pong</string>  <!-- Nome eseguibile -->
+    <key>CFBundleIconFile</key>
+    <string>icon.icns</string>
+    <key>CFBundleIdentifier</key>
+    <string>com.antonino.Pong</string>  <!-- Identificatore univoco -->
+    <key>CFBundleName</key>
+    <string>Pong</string>  <!-- Nome dell'applicazione -->
+    <key>CFBundleVersion</key>
+    <string>1.0</string>  <!-- Versione dell'app -->
+    <key>CFBundlePackageType</key>
+    <string>APPL</string>  <!-- Tipo di pacchetto -->
+    <!-- Se in futuro aggiungi un'icona, inserisci qui il riferimento -->
+    <!-- <key>CFBundleIconFile</key> -->
+    <!-- <string>PongIcon</string> -->
+</dict>
+</plist>

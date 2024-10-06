@@ -1,0 +1,3 @@
+/Users/antonino/Desktop/Code/CLionProjects/Pong/build/CMakeFiles/Pong.dir
+/Users/antonino/Desktop/Code/CLionProjects/Pong/build/CMakeFiles/edit_cache.dir
+/Users/antonino/Desktop/Code/CLionProjects/Pong/build/CMakeFiles/rebuild_cache.dir
