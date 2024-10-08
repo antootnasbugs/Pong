@@ -14,8 +14,6 @@
     <string>1.0</string>  <!-- Versione dell'app -->
     <key>CFBundlePackageType</key>
     <string>APPL</string>  <!-- Tipo di pacchetto -->
-    <!-- Se in futuro aggiungi un'icona, inserisci qui il riferimento -->
-    <!-- <key>CFBundleIconFile</key> -->
-    <!-- <string>PongIcon</string> -->
+
 </dict>
 </plist>

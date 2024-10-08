@@ -5,7 +5,7 @@
 
 class Game {
 public:
-    bool showing_menu = true, match_ended = false, pause_after_goal = false;
+    bool showing_menu = true, match_ended = false, pause_after_goal = false, paused = false;
     float difficulty = 2;
     float scale = 1.0f;
     int count = 0;
@@ -18,7 +18,9 @@ public:
 
     void show_end_menu();
 
-    void run();
+    void run_game();
+
+    void update_game();
 
     void draw_objects() const;
 

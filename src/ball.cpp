@@ -1,8 +1,9 @@
 #include "../include/ball.h"
-
 #include "../include/utils.h"
 #include <raylib.h>
 #include <raymath.h>
+
+Ball::Ball() { position = {static_cast<float>(GetScreenWidth()) / 2, static_cast<float>(GetScreenHeight()) / 2}; }
 
 void Ball::update_ball(const float difficulty) {
     static int call_count = 0;
@@ -25,7 +26,6 @@ void Ball::set_ball_velocity(const float difficulty) {
     velocity.y *= static_cast<float>(direction[randomY]);
 }
 
-Ball::Ball() { position = {static_cast<float>(GetScreenWidth()) / 2, static_cast<float>(GetScreenHeight()) / 2}; }
 
 void Ball::check_bounds() {
     if (position.y <= 0 || position.y >= static_cast<float>(GetScreenHeight())) {
@@ -46,13 +46,34 @@ int Ball::score() const {
 }
 
 void Ball::limit() {
+    float max_speed;
+
+    switch (static_cast<int>(difficulty)) {
+        case 2:
+            max_speed = 20.0f;
+            break;
+        case 3:
+            max_speed = 25.0f;
+            break;
+        case 4:
+            max_speed = 30.0f;
+            break;
+        case 5:
+            max_speed = 35.0f;
+            break;
+        default:
+            max_speed = 0.0f;
+            break;
+    }
+
+
     if (position.y + velocity.y <= -radius) {
         position.y = radius;
     }
     if (position.y + velocity.y >= static_cast<float>(GetScreenHeight()) + radius) {
         position.y = static_cast<float>(GetScreenHeight()) - radius;
     }
-    if (velocity.x >= 30 + difficulty) {
+    /*if (velocity.x >= 30 + difficulty) {
         velocity.x = 30 + difficulty;
     }
     if (velocity.x <= -30 - difficulty) {
@@ -60,5 +81,13 @@ void Ball::limit() {
     }
     if (velocity.y > 10) {
         velocity.y = 10;
+    }if (velocity.y < -10) {
+        velocity.y = -10;
+    }*/
+    if (abs(velocity.x) > max_speed) {
+        velocity.x = max_speed * static_cast<float>(getSign(velocity.x));
+    }
+    if (abs(velocity.y) > 10) {
+        velocity.y = 10 * static_cast<float>(getSign(velocity.y));
     }
 }

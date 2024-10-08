@@ -52,7 +52,7 @@ void Game::checkCollision() {
     }
 }
 
-void Game::run() {
+void Game::update_game() {
     count++;
     if (ball.position.x < 720 && ball.position.x > 80 && count % 180 == 0) {
         // update speed only if the ball is not close to paddle.
@@ -224,3 +224,41 @@ void Game::show_end_menu() {
                Vector2{posX_2, posY_2}, 40, 2, BLACK);
     draw_menu();
 }
+
+void Game::run_game() {
+    SetTargetFPS(75);
+
+    while (!WindowShouldClose()) {
+        BeginDrawing();
+        ClearBackground(Dark_Blue);
+        if (showing_menu) {
+            DrawTextEx(font, "Select a difficulty", Vector2{425, 250}, 40, 2, BLACK);
+            draw_menu();
+            DrawTextEx(font, "Tip: use left shift to get a boost.", Vector2{40, screen_height / 2 + 300}, 28, 2,
+                       LIGHTGRAY);
+        }
+        if (!showing_menu && !match_ended) {
+            if (IsKeyPressed(KEY_SPACE) || IsKeyPressed(KEY_P)) {
+                paused = !paused;
+            }
+            draw();
+
+            if (!paused) {
+                update_game();
+            }
+            if (paused) {
+                DrawRectangleRounded(Rectangle{screen_width / 2 - 30, screen_height / 2 - 35, 10, 70}, 0.7, 10, BLACK);
+                DrawRectangleRounded(Rectangle{screen_width / 2 + 20, screen_height / 2 - 35, 10, 70}, 0.7, 10, BLACK);
+
+                ball.draw_ball();
+                player.draw_paddle();
+                ai.draw_paddle();
+            }
+        }
+        if (match_ended) {
+            show_end_menu();
+        }
+        EndDrawing();
+    }
+}
+

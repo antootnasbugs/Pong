@@ -35,3 +35,5 @@ inline void UpdateTimer(Timer *timer) {
         timer->lifeTime -= GetFrameTime();
     }
 }
+
+inline int getSign(float n) { return n < 0 ? -1 : 1; }
